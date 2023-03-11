@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/createAcount.css">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+  <div class="container">
+    <h1>Crear cuenta</h1>
+    <form action="">
+      <label for="nombre">Nombre: 
+        <input type="text" class="text" id="nombre" name="nombre">
+      </label>
+      <label for="usuario">Usuario: 
+        <input type="text" class="text" id="usuario" name="usuario">
+      </label>
+      <label for="password">Password: 
+        <input type="password" class="text"  id="password" name="password">
+      </label>
+      <label for="repeat">Repeat Password: 
+        <input type="password" class="text" id="repeat" name="repeat">
+      </label>
+      <label for="tipo" class="radio">Estudiante: 
+        <input type="radio" id="estudiante" name="tipo"> Profesor: 
+        <input type="radio" id="profesor" name="tipo">
+      </label>
+      <div class="error"></div>
+      
+      <button type="submit">Crear</button>
+    </form> 
+  </div>
+</main>
+  <script src="../javascript/createAcount.js"></script>
+</body>
+</html>
