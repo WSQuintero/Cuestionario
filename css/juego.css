@@ -1,0 +1,89 @@
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: white;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  width: 500px;
+  height: 150px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: aqua;
+}
+.header img {
+  position: relative;
+  width: 200px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5PX;
+}
+.main__container__trivia {
+  width: 500px;
+  padding: 20px;
+  margin-top: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.main__container__list {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.main__list__tittle {
+  position: relative;
+  font-family: "Spectral", serif;
+  text-align: center;
+  font-weight: 600;
+  bottom: 8px;
+}
+.main__element_list {
+  position: relative;
+  padding: 5px;
+  padding-left: 15px;
+  border: 0.3px solid black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+.main__element_list:hover {
+  background-color: aqua;
+}
+.main__checkbox__label {
+  font-family: "Spectral", serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.main__input__radio {
+  position: relative;
+  z-index: 0;
+}

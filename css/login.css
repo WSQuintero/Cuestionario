@@ -1,0 +1,65 @@
+:root{
+  font-size: 62.5%;
+}
+main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 1.5rem;
+  
+}
+.container{
+  position: relative;
+  padding: 20px;
+  width: 300px;
+  bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  border: 1px dashed orange;
+  border-style: dashed;
+  gap: 10px;
+
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+h1{
+  text-align: center;
+}
+label{
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+label input[class="text"]{
+  border:  1px orange;
+  border-style: dashed;
+}
+
+
+label[class="radio"]{
+  display: flex;
+  padding: 2px;
+  justify-content: space-around;
+  margin-top: 20px;
+  font-weight: 500;
+  border:  1px;
+  border-style: dashed;
+}
+
+button{
+  width: 100px;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: block;
+}
+span{
+  text-align: center;
+}

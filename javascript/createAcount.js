@@ -33,86 +33,78 @@ class Teacher extends Usuario {
 button.addEventListener("click", addNewUser);
 
 function addNewUser(event) {
-    function baseDeDatosAdd(usuarioAdd){
-      baseUsuarios.push(usuarioAdd);
-        localStorage.setItem("baseUsuarios", JSON.stringify(baseUsuarios));
-    }
-    const usuarioExistente = baseUsuarios.find((a) => a.user === usuario.value);
+  function baseDeDatosAdd(usuarioAdd) {
+    baseUsuarios.push(usuarioAdd);
+    localStorage.setItem("baseUsuarios", JSON.stringify(baseUsuarios));
+  }
+  const usuarioExistente = baseUsuarios.find((a) => a.user === usuario.value);
 
-    if(usuarioExistente === undefined){
-      if (
-        (nombre.value &&
-          usuario.value &&
-          password.value &&
-          repeat.value &&
-          estudiante.value &&
-          profesor.value !== undefined ||
-          "") 
-      ) {
-    if(password.value ===repeat.value){
-      
-        
-      if(estudiante.checked ===false&& profesor.checked===false){
-        const errorCont=document.querySelector(".error");
-        errorCont.innerText="Por favor selecciona si eres profesor o estudiante";
-        event.preventDefault();      
-      }
-    
-      if (estudiante.checked === true) {
-        const usuarioAdd = new Estudent(
-          nombre.value,
-          usuario.value,
-          password.value,
-          repeat.value
-        );
-        baseDeDatosAdd(usuarioAdd);
-        alert("Usuario Creado exitosamente");
-      } else if (profesor.checked === true) {
-        const usuarioAdd = new Teacher(
-          nombre.value,
-          usuario.value,
-          password.value,
-          repeat.value
-        );
-        baseDeDatosAdd(usuarioAdd);
-        alert("Usuario Creado exitosamente");
-      }
-        }else{
-          const errorCont=document.querySelector(".error");
-        errorCont.innerText="Las dos contraseñas deben coincidir";
-        errorCont.style.color="red";
-        errorCont.style.fontWeight=700;
-        event.preventDefault();
+  if (usuarioExistente === undefined) {
+    if (
+      (nombre.value &&
+        usuario.value &&
+        password.value &&
+        repeat.value &&
+        estudiante.value &&
+        profesor.value !== undefined) ||
+      ""
+    ) {
+      if (password.value === repeat.value) {
+        if (estudiante.checked === false && profesor.checked === false) {
+          const errorCont = document.querySelector(".error");
+          errorCont.innerText =
+            "Por favor selecciona si eres profesor o estudiante";
+          event.preventDefault();
         }
-    }else{
-      const errorCont=document.querySelector(".error");
-        errorCont.innerText="Por favor digita todos los campos";
-        errorCont.style.color="red";
-        errorCont.style.fontWeight=700;
-        event.preventDefault();
-      const inputs =document.querySelectorAll("input");
-      
-      inputs.forEach(a=>{
-        if(a.value === undefined || a.value ===""){
-          a.style.borderColor="red";
+
+        if (estudiante.checked === true) {
+          const usuarioAdd = new Estudent(
+            nombre.value,
+            usuario.value,
+            password.value,
+            repeat.value
+          );
+          baseDeDatosAdd(usuarioAdd);
+          alert("Usuario Creado exitosamente");
+        } else if (profesor.checked === true) {
+          const usuarioAdd = new Teacher(
+            nombre.value,
+            usuario.value,
+            password.value,
+            repeat.value
+          );
+          baseDeDatosAdd(usuarioAdd);
+          alert("Usuario Creado exitosamente");
         }
-      })
-    };
-    }else{
-      const errorCont=document.querySelector(".error");
-      errorCont.innerText="El usuario ya se encuentra registrado";
-      errorCont.style.color="red";
-      errorCont.style.fontWeight=700;
+      } else {
+        const errorCont = document.querySelector(".error");
+        errorCont.innerText = "Las dos contraseñas deben coincidir";
+        errorCont.style.color = "red";
+        errorCont.style.fontWeight = 700;
+        event.preventDefault();
+      }
+    } else {
+      const errorCont = document.querySelector(".error");
+      errorCont.innerText = "Por favor digita todos los campos";
+      errorCont.style.color = "red";
+      errorCont.style.fontWeight = 700;
       event.preventDefault();
+      const inputs = document.querySelectorAll("input");
+
+      inputs.forEach((a) => {
+        if (a.value === undefined || a.value === "") {
+          a.style.borderColor = "red";
+        }
+      });
     }
-
- 
-
+  } else {
+    const errorCont = document.querySelector(".error");
+    errorCont.innerText = "El usuario ya se encuentra registrado";
+    errorCont.style.color = "red";
+    errorCont.style.fontWeight = 700;
+    event.preventDefault();
+  }
 }
-    
-      
-  
-
 
 console.log(baseUsuarios);
 

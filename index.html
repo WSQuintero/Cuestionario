@@ -4,19 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/login.css">
   <title>Document</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Login</h1>
-    <label for="">User: 
-      <input type="text">
-    </label>
-    <label for="">Password: 
-      <input type="password">
-    </label>
-    <button type="submit">Ingresar</button>
-  </div>
+  <main>
+    <div class="container">
+      <h1>Login</h1>
+      <form action="">
+        <label for="usuario">User: 
+          <input type="text" class="text" name="usuario" id="usuario">
+        </label>
+        <label for="password" >Password: 
+          <input type="password" class="text" name="password" id="password">
+        </label>
+        <button type="submit" id="button">Ingresar</button>
+      </form>
+      <div id="error"></div>
+      <span>¿Aun no tienes cuenta? <a href="./html/createcount.html" id="registrar"> Registrar </a></span>
+    </div>
+  </main>
   <script src="./javascript/login.js"></script>
 </body>
 </html>
