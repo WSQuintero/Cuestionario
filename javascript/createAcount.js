@@ -8,6 +8,7 @@ const profesor = document.querySelector("#profesor");
 const button = document.querySelector("button");
 let baseUsuarios = JSON.parse(localStorage.getItem("baseUsuarios")) || [];
 let nuevoUsuario;
+
 class Usuario {
   constructor(name, user, passw) {
     this.name = name;
@@ -66,6 +67,10 @@ function addNewUser(event) {
           );
           baseDeDatosAdd(usuarioAdd);
           alert("Usuario Creado exitosamente");
+          const link=document.createElement("a");
+          link.href="../index.html"
+          link.click();
+          event.preventDefault();
         } else if (profesor.checked === true) {
           const usuarioAdd = new Teacher(
             nombre.value,
@@ -75,6 +80,11 @@ function addNewUser(event) {
           );
           baseDeDatosAdd(usuarioAdd);
           alert("Usuario Creado exitosamente");
+          const link=document.createElement("a");
+          link.href="../index.html"
+          link.click();
+          event.preventDefault();
+          
         }
       } else {
         const errorCont = document.querySelector(".error");
