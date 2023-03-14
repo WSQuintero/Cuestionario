@@ -19,15 +19,14 @@ function ingresar(event) {
     error.style.textAlign = "center";
     event.preventDefault();
   } else {
-    if(busqueda.tipo=="Estudiante"){
-      const link=document.createElement("a");
-    link.href="./html/juego.html";
-    link.click();
-    event.preventDefault();
-    }
-    else if(busqueda.tipo=="Profesor"){
-      const link=document.createElement("a");
-      link.href="./html/creador.html";
+    if (busqueda.tipo == "Estudiante") {
+      const link = document.createElement("a");
+      link.href = "./html/juego.html";
+      link.click();
+      event.preventDefault();
+    } else if (busqueda.tipo == "Profesor") {
+      const link = document.createElement("a");
+      link.href = "./html/creador.html";
       link.click();
       event.preventDefault();
     }
