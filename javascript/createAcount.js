@@ -43,6 +43,7 @@ class Usuario {
                         const errorCont = document.querySelector(".error");
                         errorCont.innerText =
                             "Por favor selecciona si eres profesor o estudiante";
+                            errorCont.style.color="red";
                         event.preventDefault();
                     }
 
