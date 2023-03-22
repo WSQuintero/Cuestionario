@@ -8,13 +8,13 @@
 }
 
 body {
+  width: 100vw;
   background-color: white;
 }
 
 li {
   list-style: none;
 }
-
 /* creador de preguntas*/
 form{
   margin-top: 20px;
@@ -23,15 +23,30 @@ form{
   gap: 10px;
 }
 label{
+  width: 100%;
   display: flex;
   justify-content: space-between;
+
+}
+input{
+  text-align: center;
+}
+input::placeholder{
+  text-align: center;
+}
+button{
+  display: inline-block;
+  border-radius: 50%;
+  padding: 5px;
+  font-weight: 500;
+  
 }
 .remover{
   display: none;
 }
 /*juego*/
 .header {
-  width: 500px;
+  width: 100%;
   height: 150px;
   display: flex;
   margin: 0 auto;
@@ -46,21 +61,31 @@ label{
 }
 
 .main {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5PX;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 .main__container__trivia {
-  width: 500px;
-  padding: 20px;
+  width: 50%;
+  min-width: 300px;
+  max-width: 700px;
   margin-top: 10px;
+  padding: 10px;
   border: 1px solid black;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 7px;
 }
 .main__container__list {
   height: 100%;
@@ -71,11 +96,15 @@ label{
   gap: 5px;
 }
 .main__list__tittle {
+  width: 100%;
+  max-width: 700px;
+  min-width: 200px;
+  
   position: relative;
   font-family: "Spectral", serif;
   text-align: center;
   font-weight: 600;
-  bottom: 8px;
+
 }
 .main__element_list {
   position: relative;
@@ -103,3 +132,18 @@ label{
   z-index: 0;
 }
 
+.inputRespuestas{
+
+  width: 100%;
+}
+.containerPregunta{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.containerPregunta input{
+  width: 70%;
+ 
+}
