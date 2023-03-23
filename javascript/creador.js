@@ -5,17 +5,20 @@ const buttonCreator = document.querySelector(".buttonCreator");
 const divCreador = document.querySelector(".creador");
 const form = document.querySelector(".form");
 let numberQuestion;
-let puntos=0;
+let puntos = 0;
 const buttonReiniciar = document.createElement("button");
-	buttonReiniciar.classList.add("buttonReiniciar");
-	buttonReiniciar.innerText = "Reiniciar";
-	
-
-	
-	
-		
 
 buttonCreator.addEventListener("click", creador);
+
+function createButtonSend() {
+	const enviar = document.createElement("button");
+	enviar.classList.add("enviar");
+	enviar.innerText = "Enviar";
+	container.appendChild(enviar);
+	enviar.addEventListener("click", () => {
+		buttonReiniciar.classList.add("remover");
+	});
+}
 
 function selectionInput() {
 	const li = document.querySelectorAll("li");
@@ -29,16 +32,13 @@ function selectionInput() {
 }
 
 function reset() {
+	buttonReiniciar.classList.add("buttonReiniciar");
+	buttonReiniciar.innerText = "Reiniciar";
 	container.appendChild(buttonReiniciar);
-		buttonReiniciar.addEventListener("click", () => {
+	buttonReiniciar.addEventListener("click", () => {
 		location.reload();
 	});
-	
-	
-	
 }
-
-
 
 function deleteButtonCorrect() {
 	const buttonsCorrect = document.querySelectorAll(
@@ -49,6 +49,7 @@ function deleteButtonCorrect() {
 		correct.classList.add("remover");
 	}
 }
+
 function creador(event) {
 	event.preventDefault();
 	divCreador.classList.add("remover");
@@ -96,7 +97,6 @@ function creador(event) {
 			const ButtonCrearRespuesta = document.createElement("button");
 			const respuestaCorrecta = document.createElement("button");
 			const containers = document.querySelectorAll(".main__container__trivia");
-
 
 			const crearRespuesta = () => {
 				if (respuestaCorrectaClickeado) {
@@ -148,27 +148,9 @@ function creador(event) {
 				li.appendChild(label);
 				li.appendChild(input);
 				li.id = `pregunta${i}respuesta${o}`;
-				
 			}
-
-			
-			
-			}
-		
-			
-			
+		}
 	}
 	reset();
-	const contador = document.createElement("button");
-		contador.classList.add("contador");	
-		contador.innerText = "Enviar";
-		container.appendChild(contador);
-		contador.addEventListener("click",()=>{
-			
-			buttonReiniciar.classList.add("remover");
-			
-		})
-	
-	
-	
+	createButtonSend();
 }
