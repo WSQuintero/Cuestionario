@@ -4,6 +4,17 @@ const container = document.querySelector(".container");
 const buttonCreator = document.querySelector(".buttonCreator");
 const divCreador = document.querySelector(".creador");
 const form = document.querySelector(".form");
+let numberQuestion;
+let puntos=0;
+const buttonReiniciar = document.createElement("button");
+	buttonReiniciar.classList.add("buttonReiniciar");
+	buttonReiniciar.innerText = "Reiniciar";
+	
+
+	
+	
+		
+
 buttonCreator.addEventListener("click", creador);
 
 function selectionInput() {
@@ -18,16 +29,26 @@ function selectionInput() {
 }
 
 function reset() {
-	const buttonReiniciar = document.createElement("button");
-	buttonReiniciar.classList.add("buttonReiniciar");
-	buttonReiniciar.innerText = "Reiniciar";
 	container.appendChild(buttonReiniciar);
-
-	buttonReiniciar.addEventListener("click", () => {
+		buttonReiniciar.addEventListener("click", () => {
 		location.reload();
 	});
+	
+	
+	
 }
 
+
+
+function deleteButtonCorrect() {
+	const buttonsCorrect = document.querySelectorAll(
+		`.respuestaCorrecta${numberQuestion}`
+	);
+
+	for (let correct of buttonsCorrect) {
+		correct.classList.add("remover");
+	}
+}
 function creador(event) {
 	event.preventDefault();
 	divCreador.classList.add("remover");
@@ -40,6 +61,8 @@ function creador(event) {
 		const h2 = document.createElement("h2");
 		const ul = document.createElement("ul");
 		const generalLabel = document.createElement("label");
+		let correct;
+		let respuestaCorrectaClickeado = false;
 
 		containerQuestions.classList.add("main__container__trivia");
 		containerPregunta.classList.add("containerPregunta");
@@ -71,7 +94,29 @@ function creador(event) {
 			const input = document.createElement("input");
 			const inputRespuestas = document.createElement("input");
 			const ButtonCrearRespuesta = document.createElement("button");
+			const respuestaCorrecta = document.createElement("button");
 			const containers = document.querySelectorAll(".main__container__trivia");
+
+
+			const crearRespuesta = () => {
+				if (respuestaCorrectaClickeado) {
+					label.innerText = inputRespuestas.value;
+					ButtonCrearRespuesta.classList.add("remover");
+					inputRespuestas.classList.add("remover");
+					input.classList.remove("remover");
+
+					selectionInput();
+				} else {
+					alert("Por favor selecciona la respuesta correcta primero");
+				}
+			};
+			const seleccionarCorrecta = () => {
+				correct = `pregunta${i}respuesta${o}`;
+				console.log(correct);
+				numberQuestion = i;
+				deleteButtonCorrect();
+				respuestaCorrectaClickeado = true;
+			};
 
 			input.type = "radio";
 			input.name = `Pregunta${i}`;
@@ -84,30 +129,46 @@ function creador(event) {
 			input.classList.add("remover");
 			inputRespuestas.classList.add("inputRespuestas");
 			inputRespuestas.classList.add("inputRespuestas");
+			respuestaCorrecta.classList.add(`respuestaCorrecta${i}`);
 
 			inputRespuestas.placeholder = "Escribe la opción de respuesta aquí";
 			ButtonCrearRespuesta.innerText = "Crear";
+			respuestaCorrecta.innerText = "¿correcta?";
 
 			label.appendChild(inputRespuestas);
+			label.appendChild(respuestaCorrecta);
 			label.appendChild(ButtonCrearRespuesta);
 
-			ButtonCrearRespuesta.addEventListener("click", () => {
-				label.innerText = inputRespuestas.value;
-				ButtonCrearRespuesta.classList.add("remover");
-				inputRespuestas.classList.add("remover");
-				input.classList.remove("remover");
-				selectionInput();
-				
-			});
+			ButtonCrearRespuesta.addEventListener("click", crearRespuesta);
+			respuestaCorrecta.addEventListener("click", seleccionarCorrecta);
 
 			for (let cadaPregunta of containers) {
 				cadaPregunta.appendChild(generalLabel);
 				ul.appendChild(li);
 				li.appendChild(label);
 				li.appendChild(input);
+				li.id = `pregunta${i}respuesta${o}`;
+				
 			}
-		}
+
+			
+			
+			}
+		
+			
+			
 	}
-	
 	reset();
+	const contador = document.createElement("button");
+		contador.classList.add("contador");	
+		contador.innerText = "Enviar";
+		container.appendChild(contador);
+		contador.addEventListener("click",()=>{
+			
+			buttonReiniciar.classList.add("remover");
+			
+		})
+	
+	
+	
 }
