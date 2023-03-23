@@ -118,12 +118,3 @@ button.addEventListener("click", Usuario.addNewUser);
 
 console.log(baseUsuarios);
 
-/*    let usuariosJSON = JSON.stringify(valorGuardado);
-
-        let archivo = new Blob([usuariosJSON], { type: "text/javascript" });
-  
-        let enlace = document.createElement("a");
-  
-        enlace.href = URL.createObjectURL(archivo);
-        enlace.download =`${window[nombreValue].name}.js`;
-        enlace.click();         */

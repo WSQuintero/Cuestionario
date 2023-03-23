@@ -4,21 +4,64 @@ const container = document.querySelector(".container");
 const buttonCreator = document.querySelector(".buttonCreator");
 const divCreador = document.querySelector(".creador");
 const form = document.querySelector(".form");
+const buttonReiniciar = document.createElement("button");
+const botonDescarga = document.createElement('button');
+const enviar = document.createElement("button");
 let numberQuestion;
 let puntos = 0;
-const buttonReiniciar = document.createElement("button");
 
 buttonCreator.addEventListener("click", creador);
 
+
 function createButtonSend() {
-	const enviar = document.createElement("button");
+	
 	enviar.classList.add("enviar");
 	enviar.innerText = "Enviar";
 	container.appendChild(enviar);
-	enviar.addEventListener("click", () => {
-		buttonReiniciar.classList.add("remover");
-	});
+	enviar.classList.add("remover");
+
+botonDescarga.innerText = 'Descargar cuestionario';
+botonDescarga.addEventListener('click', descargarCuestionario);
+container.appendChild(botonDescarga);
+
+	
 }
+function descargarCuestionario() {
+	enviar.classList.remove("remover");
+  botonDescarga.classList.add("remover");
+	buttonReiniciar.classList.add("remover");
+	const main = document.querySelector('main');
+	let css = '';
+	try {
+		css = Array.from(document.styleSheets)
+					.filter((styleSheet) => styleSheet.href && styleSheet.href.startsWith(window.location.origin))
+					.map((styleSheet) => Array.from(styleSheet.cssRules))
+					.flat()
+					.reduce((css, rule) => css + rule.cssText, '');
+	} catch (error) {
+		console.error(error);
+	}
+
+	const contenido = `
+			<div>
+				${main.innerHTML}
+			</div>
+
+	`;
+	
+	const archivo = new Blob([contenido], { type: 'text/html' });
+	const urlArchivo = URL.createObjectURL(archivo);
+	
+	const link = document.createElement('a');
+	link.href = urlArchivo;
+	link.download = 'mi_cuestionario.html';
+	document.body.appendChild(link);
+	link.click();
+	document.body.removeChild(link);
+	buttonReiniciar.classList.remove("remover");
+	enviar.classList.add("remover");
+}
+
 
 function selectionInput() {
 	const li = document.querySelectorAll("li");
