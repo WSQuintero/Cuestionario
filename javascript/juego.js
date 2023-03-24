@@ -1,12 +1,22 @@
 const usuarioActual = JSON.parse(localStorage.getItem('usuarioActual'))
-const li = document.querySelectorAll('li')
-const container = document.querySelector('.container')
 const inputArchivo = document.getElementById('seleccionar-archivo')
-container.innerHTML = `<h1 class="saludo">Hola ${usuarioActual.name}!</h1>`
+const main = document.querySelector('main')
+const nombre = document.querySelector('h1')
 const busqueda = document.querySelector('.busqueda')
+nombre.innerText = `Hola ${usuarioActual.name}`
 
 inputArchivo.addEventListener('change', seleccionarArchivo)
 
+function selectionInput () {
+  const li = document.querySelectorAll('li')
+  li.forEach((a) => {
+    a.querySelectorAll('input').forEach((b) => {
+      a.addEventListener('click', () => {
+        b.checked = true
+      })
+    })
+  })
+}
 function seleccionarArchivo () {
   const archivo = inputArchivo.files[0]
 
@@ -16,7 +26,8 @@ function seleccionarArchivo () {
     fetch(reader.result)
       .then((response) => response.text())
       .then((data) => {
-        container.innerHTML = data
+        main.innerHTML = data
+        selectionInput()
       })
   })
 
@@ -24,11 +35,3 @@ function seleccionarArchivo () {
   inputArchivo.classList.add('remover')
   busqueda.innerHTML = 'Muy buena suerte'
 }
-
-li.forEach((a) => {
-  a.querySelectorAll('input').forEach((b) => {
-    a.addEventListener('click', () => {
-      b.checked = true
-    })
-  })
-})

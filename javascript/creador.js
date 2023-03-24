@@ -24,9 +24,9 @@ function descargarCuestionario () {
   enviar.classList.remove('remover')
   botonDescarga.classList.add('remover')
   buttonReiniciar.classList.add('remover')
-  const main = document.querySelector('main')
+  const section = document.querySelector('section')
 
-  const contenido = `<div>${main.innerHTML}</div>`
+  const contenido = `${section.innerHTML}`
 
   const archivo = new Blob([contenido], { type: 'text/html' })
   const urlArchivo = URL.createObjectURL(archivo)
