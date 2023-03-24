@@ -5,39 +5,38 @@ const buttonCreator = document.querySelector(".buttonCreator");
 const divCreador = document.querySelector(".creador");
 const form = document.querySelector(".form");
 const buttonReiniciar = document.createElement("button");
-const botonDescarga = document.createElement('button');
+const botonDescarga = document.createElement("button");
 const enviar = document.createElement("button");
 let numberQuestion;
 let puntos = 0;
 
 buttonCreator.addEventListener("click", creador);
 
-
 function createButtonSend() {
-	
 	enviar.classList.add("enviar");
 	enviar.innerText = "Enviar";
 	container.appendChild(enviar);
 	enviar.classList.add("remover");
 
-botonDescarga.innerText = 'Descargar cuestionario';
-botonDescarga.addEventListener('click', descargarCuestionario);
-container.appendChild(botonDescarga);
-
-	
+	botonDescarga.innerText = "Descargar cuestionario";
+	botonDescarga.addEventListener("click", descargarCuestionario);
+	container.appendChild(botonDescarga);
 }
 function descargarCuestionario() {
 	enviar.classList.remove("remover");
-  botonDescarga.classList.add("remover");
+	botonDescarga.classList.add("remover");
 	buttonReiniciar.classList.add("remover");
-	const main = document.querySelector('main');
-	let css = '';
+	const main = document.querySelector("main");
+	let css = "";
 	try {
 		css = Array.from(document.styleSheets)
-					.filter((styleSheet) => styleSheet.href && styleSheet.href.startsWith(window.location.origin))
-					.map((styleSheet) => Array.from(styleSheet.cssRules))
-					.flat()
-					.reduce((css, rule) => css + rule.cssText, '');
+			.filter(
+				(styleSheet) =>
+					styleSheet.href && styleSheet.href.startsWith(window.location.origin)
+			)
+			.map((styleSheet) => Array.from(styleSheet.cssRules))
+			.flat()
+			.reduce((css, rule) => css + rule.cssText, "");
 	} catch (error) {
 		console.error(error);
 	}
@@ -48,21 +47,19 @@ function descargarCuestionario() {
 			</div>
 
 	`;
-	
-	const archivo = new Blob([contenido], { type: 'text/html' });
+
+	const archivo = new Blob([contenido], { type: "text/html" });
 	const urlArchivo = URL.createObjectURL(archivo);
-	
-	const link = document.createElement('a');
+
+	const link = document.createElement("a");
 	link.href = urlArchivo;
-	link.download = 'mi_cuestionario.html';
+	link.download = "mi_cuestionario.html";
 	document.body.appendChild(link);
 	link.click();
 	document.body.removeChild(link);
 	buttonReiniciar.classList.remove("remover");
 	enviar.classList.add("remover");
 }
-
-
 function selectionInput() {
 	const li = document.querySelectorAll("li");
 	li.forEach((a) => {
@@ -73,7 +70,6 @@ function selectionInput() {
 		});
 	});
 }
-
 function reset() {
 	buttonReiniciar.classList.add("buttonReiniciar");
 	buttonReiniciar.innerText = "Reiniciar";
@@ -82,7 +78,6 @@ function reset() {
 		location.reload();
 	});
 }
-
 function deleteButtonCorrect() {
 	const buttonsCorrect = document.querySelectorAll(
 		`.respuestaCorrecta${numberQuestion}`
@@ -92,7 +87,6 @@ function deleteButtonCorrect() {
 		correct.classList.add("remover");
 	}
 }
-
 function creador(event) {
 	event.preventDefault();
 	divCreador.classList.add("remover");
