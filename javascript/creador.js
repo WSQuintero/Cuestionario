@@ -1,3 +1,4 @@
+const AES = CryptoJS.AES
 const preguntas = document.querySelector('#preguntas')
 const respuestas = document.querySelector('#respuestas')
 const container = document.querySelector('.container')
@@ -7,9 +8,18 @@ const buttonReiniciar = document.createElement('button')
 const botonDescarga = document.createElement('button')
 const enviar = document.createElement('button')
 let numberQuestion
+const respuestasCorrectas = {}
 
 buttonCreator.addEventListener('click', creador)
-
+function cifrarRespuestas () {
+  const clave = '1012437325Cc'
+  const respuestasCorrectasJSON = JSON.stringify(respuestasCorrectas)
+  const mensajeCifrado = CryptoJS.AES.encrypt(
+    respuestasCorrectasJSON,
+    clave
+  ).toString()
+  return mensajeCifrado
+}
 function createButtonSend () {
   enviar.classList.add('enviar')
   enviar.innerText = 'Enviar'
@@ -25,7 +35,11 @@ function descargarCuestionario () {
   botonDescarga.classList.add('remover')
   buttonReiniciar.classList.add('remover')
   const section = document.querySelector('section')
-
+  const cifrado = document.createElement('div')
+  cifrado.innerText = cifrarRespuestas()
+  section.appendChild(cifrado)
+  cifrado.classList.add('cifrado')
+  cifrado.classList.add('remover')
   const contenido = `${section.innerHTML}`
 
   const archivo = new Blob([contenido], { type: 'text/html' })
@@ -39,6 +53,7 @@ function descargarCuestionario () {
   document.body.removeChild(link)
   buttonReiniciar.classList.remove('remover')
   enviar.classList.add('remover')
+  console.log(respuestasCorrectas)
 }
 function selectionInput () {
   const li = document.querySelectorAll('li')
@@ -59,7 +74,9 @@ function reset () {
   })
 }
 function deleteButtonCorrect () {
-  const buttonsCorrect = document.querySelectorAll(`.respuestaCorrecta${numberQuestion}`)
+  const buttonsCorrect = document.querySelectorAll(
+		`.respuestaCorrecta${numberQuestion}`
+  )
 
   for (const correct of buttonsCorrect) {
     correct.classList.add('remover')
@@ -131,6 +148,7 @@ function creador (event) {
         numberQuestion = i
         deleteButtonCorrect()
         respuestaCorrectaClickeado = true
+        respuestasCorrectas[`pregunta${i}`] = correct
       }
 
       input.type = 'radio'
