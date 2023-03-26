@@ -64,7 +64,10 @@ function seleccionarArchivo () {
 }
 function resultado (objResultados) {
   main.classList.add('remover')
-  const containerQuestion = document.querySelectorAll('.main__container__trivia')
+  const containerQuestion = document.querySelectorAll(
+    '.main__container__trivia'
+  )
+  let respuestaCorrecta
 
   for (const compa of containerQuestion) {
     const pregunta = compa.querySelector('.main__list__tittle')
@@ -74,23 +77,36 @@ function resultado (objResultados) {
     const divContainerRespuesta = document.createElement('div')
     const h2 = document.createElement('h2')
     const ul = compa.querySelector('ul')
-    const input = ul.querySelectorAll('input')
-    console.log(input)
+    const li = ul.querySelectorAll('li')
+
     h2.innerText = pregunta.innerText
     body.appendChild(divContainerRespuesta)
     divContainerRespuesta.appendChild(h2)
     h2.classList.add('h2Respuesta')
     divContainerRespuesta.classList.add('divContainerRespuesta')
 
-    for (const quest in objResultados) {
-      input.forEach(a => {
-        if (a.checked && a.id === objResultados[quest]) {
-          contador++
-          liRespuestaCorrecta.innerText = contador
-          divContainerRespuesta.appendChild(liRespuestaCorrecta)
+    li.forEach((a) => {
+      const input = a.querySelector('input')
+      const label = a.querySelector('label')
+      for (const quest in objResultados) {
+        if (input.id === objResultados[quest]) {
+          respuestaCorrecta = label.innerText
         }
-      })
-    }
+        if (input.checked === true) {
+          if (input.id === objResultados[quest]) {
+            contador++
+            liRespuestaCorrecta.innerText = `respuesta correcta ${respuestaCorrecta}`
+            divContainerRespuesta.appendChild(liRespuestaCorrecta)
+          } else {
+            liRespuestaIncorrecta.innerText = `respuesta incorrecta ${label.innerText}`
+            liRespuestaCorrecta.innerText = `respuesta correcta ${respuestaCorrecta}`
+            divContainerRespuesta.appendChild(liRespuestaIncorrecta)
+            divContainerRespuesta.appendChild(liRespuestaCorrecta)
+          }
+        }
+      }
+    })
   }
 }
+
 // Crear una instancia de la clase y usar la función iniciar
