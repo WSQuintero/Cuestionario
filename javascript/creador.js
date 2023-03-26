@@ -180,7 +180,7 @@ function creador (event) {
         ul.appendChild(li)
         li.appendChild(label)
         li.appendChild(input)
-        li.id = `pregunta${i}respuesta${o}`
+        input.id = `pregunta${i}respuesta${o}`
       }
     }
   }
