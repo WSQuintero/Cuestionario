@@ -27,7 +27,7 @@ class Usuario {
         (nombre.value && usuario.value && password.value && repeat.value && estudiante.value && profesor.value !== undefined) || '') {
         if (password.value === repeat.value) {
           if (estudiante.checked === false && profesor.checked === false) {
-            const errorCont = document.querySelector('.error')
+            const errorCont = document.querySelector('.div__error')
             errorCont.innerText = 'Por favor selecciona si eres profesor o estudiante'
             errorCont.style.color = 'red'
             event.preventDefault()
@@ -61,14 +61,12 @@ class Usuario {
             event.preventDefault()
           }
         } else {
-          const errorCont = document.querySelector('.error')
+          const errorCont = document.querySelector('.div__error')
           errorCont.innerText = 'Las dos contraseñas deben coincidir'
-          errorCont.style.color = 'red'
-          errorCont.style.fontWeight = 700
           event.preventDefault()
         }
       } else {
-        const errorCont = document.querySelector('.error')
+        const errorCont = document.querySelector('.div__error')
         errorCont.innerText = 'Por favor digita todos los campos'
         errorCont.style.color = 'red'
         errorCont.style.fontWeight = 700
@@ -82,7 +80,7 @@ class Usuario {
         })
       }
     } else {
-      const errorCont = document.querySelector('.error')
+      const errorCont = document.querySelector('.div__error')
       errorCont.innerText = 'El usuario ya se encuentra registrado'
       errorCont.style.color = 'red'
       errorCont.style.fontWeight = 700

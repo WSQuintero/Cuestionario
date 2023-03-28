@@ -12,7 +12,9 @@ function ingresar (event) {
   const busqueda = copia.find(
     (a) => a.user === usuario.value && a.pass === password.value
   )
+
   localStorage.setItem('usuarioActual', JSON.stringify(busqueda))
+
   if (busqueda === undefined) {
     error.innerText = 'El usuario o contraseña son incorrectos'
     error.style.color = 'red'

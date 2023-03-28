@@ -10,32 +10,32 @@
 	</head>
 	<body>
 		<main>
-			<div class="container">
-				<h1>Crear cuenta</h1>
+			<div class="container__login">
+				<h1 class="main__tittle__login">Crear cuenta</h1>
 				<form action="">
-					<label for="nombre"
+					<label for="nombre" class="label"
 						>Nombre:
-						<input type="text" class="text" id="nombre" name="nombre" />
+						<input type="text" class="input" id="nombre" name="nombre" />
 					</label>
-					<label for="usuario"
+					<label for="usuario" class="label"
 						>Usuario:
-						<input type="text" class="text" id="usuario" name="usuario" />
+						<input type="text" class="input" id="usuario" name="usuario" />
 					</label>
-					<label for="password"
+					<label for="password" class="label"
 						>Password:
-						<input type="password" class="text" id="password" name="password" />
+						<input type="password" class="input" id="password" name="password" />
 					</label>
-					<label for="repeat"
+					<label for="repeat" class="label"
 						>Repeat Password:
-						<input type="password" class="text" id="repeat" name="repeat" />
+						<input type="password" class="input" id="repeat" name="repeat" />
 					</label>
 					<label for="tipo" class="radio"
 						>Estudiante:
-						<input type="radio" id="estudiante" name="tipo" /> Profesor:
-						<input type="radio" id="profesor" name="tipo" />
+						<input type="radio" id="estudiante" name="tipo" class="input__usuario"/> Profesor:
+						<input type="radio" id="profesor" name="tipo"  class="input__usuario"/>
 					</label>
-					<div class="error"></div>
-					<button type="submit">Crear</button>
+					<div class="div__error"></div>
+					<button type="submit" class="buton__send">Crear</button>
 				</form>
 			</div>
 		</main>

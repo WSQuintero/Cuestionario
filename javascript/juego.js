@@ -67,46 +67,87 @@ function resultado (objResultados) {
   const containerQuestion = document.querySelectorAll(
     '.main__container__trivia'
   )
-  let respuestaCorrecta
+  const respuestasCorrectas = []
+  const respuestasInCorrectas = []
+  const respuestasCorrectasSinCLickear = []
 
   for (const compa of containerQuestion) {
     const pregunta = compa.querySelector('.main__list__tittle')
-    const label = compa.querySelector('.main__checkbox__label')
-    const liRespuestaCorrecta = document.createElement('li')
-    const liRespuestaIncorrecta = document.createElement('li')
-    const divContainerRespuesta = document.createElement('div')
-    const h2 = document.createElement('h2')
     const ul = compa.querySelector('ul')
     const li = ul.querySelectorAll('li')
-
-    h2.innerText = pregunta.innerText
-    body.appendChild(divContainerRespuesta)
-    divContainerRespuesta.appendChild(h2)
-    h2.classList.add('h2Respuesta')
-    divContainerRespuesta.classList.add('divContainerRespuesta')
 
     li.forEach((a) => {
       const input = a.querySelector('input')
       const label = a.querySelector('label')
+
       for (const quest in objResultados) {
-        if (input.id === objResultados[quest]) {
-          respuestaCorrecta = label.innerText
-        }
-        if (input.checked === true) {
-          if (input.id === objResultados[quest]) {
-            contador++
-            liRespuestaCorrecta.innerText = `respuesta correcta ${respuestaCorrecta}`
-            divContainerRespuesta.appendChild(liRespuestaCorrecta)
-          } else {
-            liRespuestaIncorrecta.innerText = `respuesta incorrecta ${label.innerText}`
-            liRespuestaCorrecta.innerText = `respuesta correcta ${respuestaCorrecta}`
-            divContainerRespuesta.appendChild(liRespuestaIncorrecta)
-            divContainerRespuesta.appendChild(liRespuestaCorrecta)
-          }
+        const inputCorrecto = input.id === objResultados[quest]
+
+        if (inputCorrecto && input.checked) {
+          respuestasCorrectas.push([
+            input.id,
+						`Respuesta correcta: ${label.innerText}`,
+						pregunta.innerText
+          ])
+        } else if (inputCorrecto && input.checked === false) {
+          respuestasCorrectasSinCLickear.push([
+            input.id,
+						`Respuesta correcta: ${label.innerText}`,
+						pregunta.innerText
+          ])
         }
       }
     })
   }
+
+  containerQuestion.forEach((a) => {
+    const preguntaTittle = a.querySelector('.main__list__tittle')
+    const ulGeneral = a.querySelector('ul')
+    const labelGeneral = ulGeneral.querySelectorAll('label')
+    labelGeneral.forEach((label) => {
+      const inputGeneral = label.querySelector('input')
+      respuestasCorrectas.forEach((correct) => {
+        if (inputGeneral.checked && inputGeneral.id !== correct[0]) {
+          contador++
+          if (respuestasCorrectas.length !== containerQuestion.length) {
+            respuestasInCorrectas.push([
+              inputGeneral.id,
+							`Respuesta incorrecta: ${label.innerText}`,
+							preguntaTittle.innerText
+            ])
+          }
+        }
+      })
+    })
+  })
+
+  const todas = respuestasCorrectas.concat(respuestasInCorrectas)
+  todas.forEach((pregunta) => {
+    const container = document.createElement('div')
+    const h2Tittle = document.createElement('h2')
+    const liCorrectas = document.createElement('li')
+    const liInCorrectas = document.createElement('li')
+    liCorrectas.classList.add('liRespuestas')
+    liInCorrectas.classList.add('liRespuestas')
+    container.classList.add('containerRespuestas')
+    h2Tittle.classList.add('h2Tittle')
+    h2Tittle.innerText = pregunta[2]
+    body.appendChild(container)
+    container.appendChild(h2Tittle)
+    if (pregunta[1].includes('Respuesta incorrecta:')) {
+      liCorrectas.innerText = pregunta[1]
+      container.appendChild(liCorrectas)
+    } else if (pregunta[1].includes('Respuesta correcta:')) {
+      liInCorrectas.innerText = pregunta[1]
+      container.appendChild(liInCorrectas)
+    }
+  })
+  const resultado = document.createElement('p')
+  resultado.classList.add('resultado')
+  resultado.innerText = `Tuviste ${contador} respuestas correctas de ${todas.length}`
+  body.appendChild(resultado)
+  console.log(respuestasCorrectas)
+  console.log(respuestasInCorrectas)
 }
 
 // Crear una instancia de la clase y usar la función iniciar

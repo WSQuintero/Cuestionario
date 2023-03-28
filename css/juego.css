@@ -173,3 +173,25 @@ button {
 	margin: 0 auto;
 	
 }
+.liRespuestas{
+	width: auto;
+	border: 1px solid aqua;
+	padding: 5px;
+	color: aqua;
+	text-align: center;
+	font-size: 2rem;
+}
+.h2Tittle{
+	width: auto;
+	border: 1px solid aqua;
+	padding: 5px;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+}
+.resultado{
+	padding: 15px;
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+}

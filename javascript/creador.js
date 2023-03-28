@@ -1,4 +1,3 @@
-const AES = CryptoJS.AES
 const preguntas = document.querySelector('#preguntas')
 const respuestas = document.querySelector('#respuestas')
 const container = document.querySelector('.container')
@@ -74,8 +73,7 @@ function reset () {
   })
 }
 function deleteButtonCorrect () {
-  const buttonsCorrect = document.querySelectorAll(
-		`.respuestaCorrecta${numberQuestion}`
+  const buttonsCorrect = document.querySelectorAll(`.respuestaCorrecta${numberQuestion}`
   )
 
   for (const correct of buttonsCorrect) {
@@ -93,7 +91,7 @@ function creador (event) {
     const buttonPregunta = document.createElement('button')
     const h2 = document.createElement('h2')
     const ul = document.createElement('ul')
-    const generalLabel = document.createElement('label')
+    const divContainerLabel = document.createElement('div')
     let correct
     let respuestaCorrectaClickeado = false
 
@@ -112,7 +110,7 @@ function creador (event) {
     containerPregunta.appendChild(inputPregunta)
     containerPregunta.appendChild(buttonPregunta)
     containerPregunta.appendChild(h2)
-    generalLabel.appendChild(ul)
+    divContainerLabel.appendChild(ul)
 
     buttonPregunta.addEventListener('click', () => {
       h2.classList.remove('remover')
@@ -133,6 +131,7 @@ function creador (event) {
       const crearRespuesta = () => {
         if (respuestaCorrectaClickeado) {
           label.innerText = inputRespuestas.value
+          label.appendChild(input)
           ButtonCrearRespuesta.classList.add('remover')
           inputRespuestas.classList.add('remover')
           input.classList.remove('remover')
@@ -153,7 +152,7 @@ function creador (event) {
 
       input.type = 'radio'
       input.name = `Pregunta${i}`
-      generalLabel.htmlFor = `Pregunta${i}`
+      divContainerLabel.htmlFor = `Pregunta${i}`
 
       ul.classList.add('main__container__list')
       li.classList.add('main__element_list')
@@ -176,14 +175,13 @@ function creador (event) {
       respuestaCorrecta.addEventListener('click', seleccionarCorrecta)
 
       for (const cadaPregunta of containers) {
-        cadaPregunta.appendChild(generalLabel)
+        cadaPregunta.appendChild(divContainerLabel)
         ul.appendChild(li)
         li.appendChild(label)
-        li.appendChild(input)
         input.id = `pregunta${i}respuesta${o}`
       }
     }
   }
-  reset()
   createButtonSend()
+  reset()
 }
