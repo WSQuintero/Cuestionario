@@ -3,13 +3,27 @@ const respuestas = document.querySelector('#respuestas')
 const container = document.querySelector('.container')
 const buttonCreator = document.querySelector('.buttonCreator')
 const divCreador = document.querySelector('.creador')
+const creadorContainer = document.querySelector('.creadorContainer')
+
 const buttonReiniciar = document.createElement('button')
 const botonDescarga = document.createElement('button')
 const enviar = document.createElement('button')
 let numberQuestion
 const respuestasCorrectas = {}
-
+const containerButtons = document.querySelector('.containerButtons')
 buttonCreator.addEventListener('click', creador)
+
+function adjustItemsPosition () {
+  const containerPregunta = document.querySelector('.container')
+  const items = containerPregunta.querySelectorAll('.main__container__trivia')
+
+  items.forEach(a => {
+    a.style.position = 'relative'
+    a.style.top = '0px'
+    console.log(a)
+  })
+}
+
 function cifrarRespuestas () {
   const clave = '1012437325Cc'
   const respuestasCorrectasJSON = JSON.stringify(respuestasCorrectas)
@@ -22,12 +36,13 @@ function cifrarRespuestas () {
 function createButtonSend () {
   enviar.classList.add('enviar')
   enviar.innerText = 'Enviar'
-  container.appendChild(enviar)
+  containerButtons.appendChild(enviar)
   enviar.classList.add('remover')
 
   botonDescarga.innerText = 'Descargar cuestionario'
+  botonDescarga.classList.add('botonDescarga')
   botonDescarga.addEventListener('click', descargarCuestionario)
-  container.appendChild(botonDescarga)
+  containerButtons.appendChild(botonDescarga)
 }
 function descargarCuestionario () {
   enviar.classList.remove('remover')
@@ -67,7 +82,7 @@ function selectionInput () {
 function reset () {
   buttonReiniciar.classList.add('buttonReiniciar')
   buttonReiniciar.innerText = 'Reiniciar'
-  container.appendChild(buttonReiniciar)
+  containerButtons.appendChild(buttonReiniciar)
   buttonReiniciar.addEventListener('click', () => {
     location.reload()
   })
@@ -83,7 +98,9 @@ function deleteButtonCorrect () {
 function creador (event) {
   event.preventDefault()
   divCreador.classList.add('remover')
-
+  const main = document.querySelector('main')
+  main.classList.remove('.main')
+  creadorContainer.style.height = 'auto'
   for (let i = 0; i < preguntas.value; i++) {
     const containerQuestions = document.createElement('div')
     const containerPregunta = document.createElement('div')
@@ -96,10 +113,12 @@ function creador (event) {
     let respuestaCorrectaClickeado = false
 
     containerQuestions.classList.add('main__container__trivia')
+    containerQuestions.classList.add(`pregunta${i + 1}`)
     containerPregunta.classList.add('containerPregunta')
     buttonPregunta.classList.add('buttonPregunta')
     h2.classList.add('main__list__tittle')
     h2.classList.add('remover')
+    divContainerLabel.classList.add('divContainerLabel')
 
     inputPregunta.type = 'text'
     buttonPregunta.innerText = 'Crear pregunta'
@@ -182,6 +201,9 @@ function creador (event) {
       }
     }
   }
+  adjustItemsPosition()
+
+  window.addEventListener('resize', adjustItemsPosition)
   createButtonSend()
   reset()
 }
