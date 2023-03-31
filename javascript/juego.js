@@ -9,6 +9,27 @@ let contador = 0
 inputArchivo.addEventListener('change', seleccionarArchivo)
 nombre.innerText = `Hola ${usuarioActual.name}`
 
+function seleccionarArchivo () {
+  const archivo = inputArchivo.files[0]
+
+  const reader = new FileReader()
+
+  reader.addEventListener('load', () => {
+    fetch(reader.result)
+      .then((response) => response.text())
+      .then((data) => {
+        main.innerHTML = data
+        selectionInput()
+        const enviar = new Enviar()
+        enviar.iniciar()
+      })
+  })
+
+  reader.readAsDataURL(archivo)
+  inputArchivo.classList.add('remover')
+  busqueda.innerHTML = 'Muy buena suerte'
+}
+
 class Enviar {
   #datoCifrado = '1012437325Cc'
 
@@ -42,26 +63,7 @@ function selectionInput () {
     })
   })
 }
-function seleccionarArchivo () {
-  const archivo = inputArchivo.files[0]
 
-  const reader = new FileReader()
-
-  reader.addEventListener('load', () => {
-    fetch(reader.result)
-      .then((response) => response.text())
-      .then((data) => {
-        main.innerHTML = data
-        selectionInput()
-        const enviar = new Enviar()
-        enviar.iniciar()
-      })
-  })
-
-  reader.readAsDataURL(archivo)
-  inputArchivo.classList.add('remover')
-  busqueda.innerHTML = 'Muy buena suerte'
-}
 function resultado (objResultados) {
   main.classList.add('remover')
   const containerQuestion = document.querySelectorAll(
@@ -84,17 +86,11 @@ function resultado (objResultados) {
         const inputCorrecto = input.id === objResultados[quest]
 
         if (inputCorrecto && input.checked) {
-          respuestasCorrectas.push([
-            input.id,
-						`Respuesta correcta: ${label.innerText}`,
-						pregunta.innerText
+          respuestasCorrectas.push([input.id, `Respuesta correcta: ${label.innerText}`, pregunta.innerText
           ])
         } else if (inputCorrecto && input.checked === false) {
           respuestasCorrectasSinCLickear.push([
-            input.id,
-						`Respuesta correcta: ${label.innerText}`,
-						pregunta.innerText
-          ])
+            input.id, `Respuesta correcta: ${label.innerText}`, pregunta.innerText])
         }
       }
     })

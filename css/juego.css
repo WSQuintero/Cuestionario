@@ -1,16 +1,21 @@
 :root {
 	font-size: 62.5%;
+	--color-fondo: rgb(78, 78, 78);
+	--color-fondo2: rgb(253, 253, 253);
+	--color-fondo3: rgb(209, 209, 209);
+	--color--hover: rgb(212, 155, 50);
 }
 
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-	height: 99vh;
+	display: flex;
+	flex-direction: column;
 	background-color: white;
-
 }
 
 li {
@@ -19,32 +24,37 @@ li {
 
 .header {
 	width: 100%;
-	height: 15vh;
+	height: 5vh;
 	display: flex;
 	margin: 0 auto;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
-	background-color: aqua;
-}
-
-.header img {
-	position: relative;
-	width: 200px;
+	background-color: var(--color-fondo);
 }
 
 .main {
-	width: 100%;
-	height: 85vh;
+	padding: 20px;
+	background-image: url("../img/vecteezy_abstract-white-background-with-halftone-texture_6469232.jpg");
+	background-size: contain;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	gap: 10px;
 
 }
 
 .main p {
 	font-size: 1.3rem;
+}
+.containerSearch{
+	height: 82.4vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+		flex-direction: column;
+gap: 2rem;
 }
 
 .container {
@@ -53,27 +63,47 @@ li {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
+	
+	
 }
 
 .main__container__trivia {
 	width: 50%;
-	min-width: 300px;
-	max-width: 700px;
-	margin-top: 10px;
-	padding: 10px;
-	border: 1px solid black;
-	border-radius: 15px;
+	min-width: 30rem;
+	max-width: 60rem;
+	padding: 3rem;
 	display: flex;
 	flex-direction: column;
-	gap: 7px;
+	align-items: center;
+	justify-content: center;
+	border: 1px dashed var(--color-fondo);
+	border-style: dashed;
+	gap: 1rem;
+	background-color: var(--color-fondo3);
+	border-radius: 5rem;
+	
+}
+.span {
+	width: 3rem;
+	margin-bottom: 1rem;
+	color: var(--color-fondo);
+	font-size: 2rem;
+	border: 1px dashed var(--color-fondo);
+	text-align: center;
+	
+}
+.divContainerLabel {
+	width: 100%;
+
+	
 }
 
 .main__container__list {
 	width: 100%;
-	height: 100%;
-	display: flex;
+		display: flex;
 	flex-direction: column;
 	gap: 5px;
+
 }
 
 .main__list__tittle {
@@ -87,19 +117,19 @@ li {
 }
 
 .main__element_list {
-	position: relative;
+	width: 100%;
 	padding: 5px;
-	padding-left: 15px;
 	border: 0.3px solid black;
 	border-radius: 10px;
 	display: flex;
-	align-items: center;
 	cursor: pointer;
 	z-index: 10;
+	border: 1px dashed rgb(0, 67, 94);
+	
 }
 
 .main__element_list:hover {
-	background-color: aqua;
+	background-color: var(--color--hover);
 }
 
 .main__checkbox__label {
@@ -195,4 +225,14 @@ button {
 	text-align: center;
 	font-size: 2rem;
 	font-weight: 700;
+}
+.footer {
+	width: 100%;
+	height: 5vh;
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--color-fondo);
 }

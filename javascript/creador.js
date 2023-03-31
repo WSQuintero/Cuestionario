@@ -4,26 +4,13 @@ const container = document.querySelector('.container')
 const buttonCreator = document.querySelector('.buttonCreator')
 const divCreador = document.querySelector('.creador')
 const creadorContainer = document.querySelector('.creadorContainer')
-
+const enviar = document.createElement('button')
 const buttonReiniciar = document.createElement('button')
 const botonDescarga = document.createElement('button')
-const enviar = document.createElement('button')
 let numberQuestion
 const respuestasCorrectas = {}
 const containerButtons = document.querySelector('.containerButtons')
 buttonCreator.addEventListener('click', creador)
-
-function adjustItemsPosition () {
-  const containerPregunta = document.querySelector('.container')
-  const items = containerPregunta.querySelectorAll('.main__container__trivia')
-
-  items.forEach(a => {
-    a.style.position = 'relative'
-    a.style.top = '0px'
-    console.log(a)
-  })
-}
-
 function cifrarRespuestas () {
   const clave = '1012437325Cc'
   const respuestasCorrectasJSON = JSON.stringify(respuestasCorrectas)
@@ -54,7 +41,7 @@ function descargarCuestionario () {
   section.appendChild(cifrado)
   cifrado.classList.add('cifrado')
   cifrado.classList.add('remover')
-  const contenido = `${section.innerHTML}`
+  const contenido = `${section.innerHTML}${containerButtons.innerHTML}`
 
   const archivo = new Blob([contenido], { type: 'text/html' })
   const urlArchivo = URL.createObjectURL(archivo)
@@ -203,9 +190,6 @@ function creador (event) {
       }
     }
   }
-  adjustItemsPosition()
-
-  window.addEventListener('resize', adjustItemsPosition)
   createButtonSend()
   reset()
 }
