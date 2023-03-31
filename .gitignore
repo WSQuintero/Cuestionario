@@ -2,3 +2,7 @@
 /node_modules
 .eslintignore
 .eslintrc.js
+img
+*.png
+*.jpeg
+*.jpg

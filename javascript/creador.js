@@ -102,6 +102,7 @@ function creador (event) {
   main.classList.remove('.main')
   creadorContainer.style.height = 'auto'
   for (let i = 0; i < preguntas.value; i++) {
+    const span = document.createElement('span')
     const containerQuestions = document.createElement('div')
     const containerPregunta = document.createElement('div')
     const inputPregunta = document.createElement('input')
@@ -113,18 +114,19 @@ function creador (event) {
     let respuestaCorrectaClickeado = false
 
     containerQuestions.classList.add('main__container__trivia')
-    containerQuestions.classList.add(`pregunta${i + 1}`)
     containerPregunta.classList.add('containerPregunta')
     buttonPregunta.classList.add('buttonPregunta')
     h2.classList.add('main__list__tittle')
     h2.classList.add('remover')
     divContainerLabel.classList.add('divContainerLabel')
+    span.classList.add('span')
 
     inputPregunta.type = 'text'
     buttonPregunta.innerText = 'Crear pregunta'
     inputPregunta.placeholder = 'Escibe la pregunta aquí'
-
+    span.innerText = i + 1
     container.appendChild(containerQuestions)
+    containerQuestions.appendChild(span)
     containerQuestions.appendChild(containerPregunta)
     containerPregunta.appendChild(inputPregunta)
     containerPregunta.appendChild(buttonPregunta)
