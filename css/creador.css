@@ -130,11 +130,12 @@ h1:hover {
 
 .span {
 	width: 3rem;
+	margin-bottom: 1rem;
 	color: var(--color-fondo);
 	font-size: 2rem;
 	border: 1px dashed var(--color-fondo);
 	text-align: center;
-	margin-bottom: 1rem;
+	
 }
 .container {
 	width: 50%;
