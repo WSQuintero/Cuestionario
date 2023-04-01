@@ -14,10 +14,18 @@ class Usuario {
     this.pass = passw
   }
 
+  static cifrarRespuestas (users) {
+    const clave = '1012437325Cc'
+    const respuestasCorrectasJSON = JSON.stringify(users)
+    const mensajeCifrado = CryptoJS.AES.encrypt(respuestasCorrectasJSON, clave).toString()
+    return mensajeCifrado
+  }
+
   static addNewUser (event) {
     function baseDeDatosAdd (usuarioAdd) {
       baseUsuarios.push(usuarioAdd)
-      localStorage.setItem('baseUsuarios', JSON.stringify(baseUsuarios))
+
+      localStorage.setItem('baseUsuarios', JSON.stringify(Usuario.cifrarRespuestas(baseUsuarios)))
     }
 
     const usuarioExistente = baseUsuarios.find((a) => a.user === usuario.value)
@@ -104,5 +112,3 @@ class Teacher extends Usuario {
 }
 
 button.addEventListener('click', Usuario.addNewUser)
-
-console.log(baseUsuarios)

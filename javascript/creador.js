@@ -7,17 +7,16 @@ const creadorContainer = document.querySelector('.creadorContainer')
 const enviar = document.createElement('button')
 const buttonReiniciar = document.createElement('button')
 const botonDescarga = document.createElement('button')
-let numberQuestion
 const respuestasCorrectas = {}
 const containerButtons = document.querySelector('.containerButtons')
+let numberQuestion
+
 buttonCreator.addEventListener('click', creador)
+
 function cifrarRespuestas () {
   const clave = '1012437325Cc'
   const respuestasCorrectasJSON = JSON.stringify(respuestasCorrectas)
-  const mensajeCifrado = CryptoJS.AES.encrypt(
-    respuestasCorrectasJSON,
-    clave
-  ).toString()
+  const mensajeCifrado = CryptoJS.AES.encrypt(respuestasCorrectasJSON, clave).toString()
   return mensajeCifrado
 }
 function createButtonSend () {

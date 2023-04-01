@@ -1,15 +1,14 @@
 const baseUsuarios = JSON.parse(localStorage.getItem('baseUsuarios')) || []
 const usuario = document.querySelector('#usuario')
 const password = document.querySelector('#password')
-const copia = [...baseUsuarios]
-
 const button = document.getElementById('button')
 const error = document.querySelector('#error')
 
+console.log(baseUsuarios)
 button.addEventListener('click', ingresar)
 
 function ingresar (event) {
-  const busqueda = copia.find(
+  const busqueda = desCifrar().find(
     (a) => a.user === usuario.value && a.pass === password.value
   )
 
@@ -33,4 +32,12 @@ function ingresar (event) {
       event.preventDefault()
     }
   }
+}
+
+function desCifrar () {
+  const decrypted = CryptoJS.AES.decrypt(baseUsuarios, '1012437325Cc').toString(
+    CryptoJS.enc.Utf8
+  )
+  const respuestas = JSON.parse(decrypted)
+  return respuestas
 }

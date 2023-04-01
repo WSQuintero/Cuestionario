@@ -1,8 +1,9 @@
 :root {
 	font-size: 62.5%;
-	--color-fondo: rgb(78, 78, 78);
+	--color-fondo: rgb(78, 78, 78,0.7);
 	--color-fondo2: rgb(253, 253, 253);
-	--color-fondo3: rgb(209, 209, 209);
+	--color-fondo3: rgba(77, 77, 77, 0.7);
+	--color-fondo4: rgba(26, 26, 26, 0.7);
 	--color--hover: rgb(212, 155, 50);
 }
 
@@ -13,6 +14,7 @@
 }
 
 body {
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	background-color: white;
@@ -34,6 +36,7 @@ li {
 }
 
 .main {
+	height: 100%;
 	padding: 20px;
 	background-image: url("../img/vecteezy_abstract-white-background-with-halftone-texture_6469232.jpg");
 	background-size: contain;
@@ -49,7 +52,7 @@ li {
 	font-size: 1.3rem;
 }
 .containerSearch{
-	height: 82.4vh;
+	height: 83.7vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -77,24 +80,24 @@ gap: 2rem;
 	align-items: center;
 	justify-content: center;
 	border: 1px dashed var(--color-fondo);
-	border-style: dashed;
 	gap: 1rem;
-	background-color: var(--color-fondo3);
+	background-color: var(--color-fondo);
 	border-radius: 5rem;
+	color: white;
 	
 }
 .span {
 	width: 3rem;
 	margin-bottom: 1rem;
-	color: var(--color-fondo);
-	font-size: 2rem;
-	border: 1px dashed var(--color-fondo);
+	color: white;
+	font-size: 3rem;
+	border: 1px dashed white;
 	text-align: center;
 	
 }
 .divContainerLabel {
+	margin-top: 15px;
 	width: 100%;
-
 	
 }
 
@@ -114,17 +117,20 @@ gap: 2rem;
 	font-family: "Spectral", serif;
 	text-align: center;
 	font-weight: 600;
+	font-size: 2rem;
 }
 
 .main__element_list {
 	width: 100%;
 	padding: 5px;
-	border: 0.3px solid black;
+	border: 0.3px dashed white;
 	border-radius: 10px;
 	display: flex;
 	cursor: pointer;
 	z-index: 10;
-	border: 1px dashed rgb(0, 67, 94);
+	background-color: var(--color-fondo3);
+	
+
 	
 }
 
@@ -134,7 +140,7 @@ gap: 2rem;
 
 .main__checkbox__label {
 	font-family: "Spectral", serif;
-	font-weight: 300;
+	font-weight: 500;
 	font-size: 1.5rem;
 	margin-left: 5px;
 	cursor: pointer;
@@ -179,52 +185,65 @@ input::placeholder {
 }
 
 button {
+	width: 200px;
 	margin-left: 5px;
 	display: inline-block;
 	border-radius: 10px;
 	padding: 5px;
 	font-weight: 500;
+	color: var(--color-fondo4);
+}
+button:hover{
+	background-color: var(--color--hover);
+	color: white;
+	font-weight: 600;
 }
 
 .remover {
 	display: none;
 }
-.divContainerRespuesta{
-	padding: 30px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border:1px solid aqua;
-	font-size: 2rem;
-	font-weight: 700;
-	color:aqua;
-}
 
-.h2Respuesta{
-	margin: 0 auto;
-	
-}
-.liRespuestas{
-	width: auto;
-	border: 1px solid aqua;
-	padding: 5px;
-	color: aqua;
-	text-align: center;
-	font-size: 2rem;
-}
-.h2Tittle{
-	width: auto;
-	border: 1px solid aqua;
-	padding: 5px;
-	text-align: center;
-	font-size: 2rem;
-	font-weight: 700;
-}
 .resultado{
 	padding: 15px;
 	text-align: center;
 	font-size: 2rem;
 	font-weight: 700;
+}
+
+.containerRespuestas{
+	height: 100%;
+	padding: 30px;
+	display:  flex;
+	flex-direction: column;
+gap: 20px;
+opacity: 85%;
+}
+.containerRespu {
+	padding: 10px;
+	border: 1px solid var(--color-fondo3);
+}
+.containerRespu >p{
+margin-top: 20px;
+padding: 5px;
+border: 1px;
+border-style: dashed;
+font-size: 1.5rem;
+}
+.containerRespu >h1{
+text-align: center;
+color: var(--color-fondo);
+}
+.containerRespu >h2{
+text-align: center;
+margin-top: 15px;
+}
+.contador{
+	padding: 5px;
+	text-align: center;
+	border: 1px solid var(--color-fondo);
+	font-size: 2rem;
+	font-weight: 600;
+	
 }
 .footer {
 	width: 100%;
