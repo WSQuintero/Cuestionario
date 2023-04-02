@@ -188,4 +188,3 @@ function resultado (respuestasCorrectas) {
   )
 }
 
-// Crear una instancia de la clase y usar la función iniciar

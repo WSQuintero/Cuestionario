@@ -4,7 +4,6 @@ const password = document.querySelector('#password')
 const button = document.getElementById('button')
 const error = document.querySelector('#error')
 
-console.log(baseUsuarios)
 button.addEventListener('click', ingresar)
 
 function ingresar (event) {
