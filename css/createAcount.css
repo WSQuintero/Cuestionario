@@ -1,34 +1,42 @@
 :root {
 	font-size: 62.5%;
+	--color-fondo: rgb(78, 78, 78);
+	--color-fondo2: rgb(253, 253, 253);
+	--color-fondo3: rgb(209, 209, 209, 0.3);
+	--color--hover: rgb(212, 155, 50);
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 main {
 	width: 100%;
 	height: 100vh;
 	display: flex;
-	justify-content: center;
+	justify-content: right;
 	align-items: center;
 	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 	font-size: 1.5rem;
-	background-image: url("https://fondosmil.com/fondo/17281.jpg");
+	background-image: url("https://images.pexels.com/photos/2008145/pexels-photo-2008145.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 	background-position: left;
-	background-repeat: no-repeat;
 	background-size: cover;
 }
 .container__login {
 	width: 50%;
-	min-width: 33rem;
-	max-width: 35rem;
-	position: relative;
-	padding: 6rem;
+	min-width: 30rem;
+	max-width: 60rem;
+	margin-right: 70px;
+	padding: 4rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	border: 1px dashed orange;
+	border: 1px dashed var(--color-fondo);
 	border-style: dashed;
 	gap: 1rem;
-	background-color: rgba(255, 255, 255, 0.7);
-	border-radius: 40%;
-	transition: transform cubic-bezier(0.27, 0.88, 0.74, 0.56) 0.3s;
+	background-color: var(--color-fondo3);
+	border-radius: 3rem;
+	transition: transform cubic-bezier(0.27, 0.88, 0.74, 0.56) 0.4s;
 }
 
 .container__login:hover {
@@ -38,8 +46,6 @@ form {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	gap: 1rem;
 }
 .main__tittle__login {
@@ -55,47 +61,68 @@ form {
 }
 .input {
 	width: 70%;
-	border: 1px orange;
+	border: 1px var(--color-fondo);
 	border-style: dashed;
 }
 
-.radio {
-	width: 90%;
-	padding: 1rem;
-	display: flex;
-	justify-content: space-between;
-	margin-top: 3rem;
-	background-color: rgb(255, 176, 86, 0.5);
-	font-size: 2rem;
-	border-radius: 2rem;
-}
-.input__usuario {
-	width: 2rem;
-}
 .buton__send {
 	width: 10rem;
 	height: 3rem;
+	padding: 1rem;
 	margin: 0 auto;
-	margin-top: 3rem;
-	display: block;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border-radius: 1rem;
-	background-color: rgb(255, 176, 86);
-	color: black;
-	font-weight: 500;
-	font-size: 2rem;
+	background-color: var(--color-fondo);
+	color: white;
+	font-weight: 700;
+	cursor: pointer;
 }
 
-.div__error {
-	margin-top: 1.5rem;
+.buton__send:hover {
+	background-color: var(--color--hover);
+}
+.span__signup {
+	width: 70%;
+	display: flex;
+	justify-content: space-around;
 	text-align: center;
-	font-size: 2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+.a__signup {
+	color: var(--color-fondo);
+	font-weight: 700;
+	text-decoration: none;
+}
+.div__error {
 	color: red;
-  font-weight: 700;
 }
 
-@media (max-width: 58.9rem) {
+.label input{
+width: 65%;
+}
+.radio{
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.radio input{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  main{
+    justify-content: center;
+    background-position: right;
+    
+  }
 	.container__login {
 		padding: 2rem;
+    margin-right: 0px;
 	}
 	.container__login:hover {
 		transform: none;
@@ -106,7 +133,7 @@ form {
 	.input {
 		width: 50%;
 	}
-	.label {
-		width: 90%;
-	}
+	.label input{
+width: 50%;
+}
 }

@@ -53,9 +53,7 @@ function seleccionarArchivo () {
 }
 function desCifrar (clave) {
   const cifrado = document.querySelector('.cifrado').innerText
-  const decrypted = CryptoJS.AES.decrypt(cifrado, clave).toString(
-    CryptoJS.enc.Utf8
-  )
+  const decrypted = CryptoJS.AES.decrypt(cifrado, clave).toString(CryptoJS.enc.Utf8)
   const respuestas = JSON.parse(decrypted)
   const copiaResultados = Object.values(respuestas)
 
